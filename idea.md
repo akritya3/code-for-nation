@@ -21,17 +21,17 @@ aur bhi har page ka specific chatbot ya fir ek hi chatbot saare kaam kr dega har
 5. aakriti aur rishabh (ec)  tum log dekh lo jo bhi achhii lge backend ya frontend usko join kr lo aur coordinate krke kaam start krna bhai log.
 
 # how to work-
-For linux developers-
-git clone https://github.com/onbitSyn/code-for-nation.git
-cd code-for-nation
-npm install
-git branch <choose your unique name the code in this branch will be your responsibility>
-git checkout <same unique name>
-for pushing to the github
-git add .
-git commit -m <your message>
-git push -u origin <your branch name>
-For windows developers 
-same steps as the linux but first install git, follow tutorial https://www.atlassian.com/git/tutorials/install-git
+## For linux developers- <br />
+git clone https://github.com/onbitSyn/code-for-nation.git<br />
+cd code-for-nation<br />
+npm install<br />
+git branch <choose your unique name the code in this branch will be your responsibility> <br />
+git checkout <same unique name> <br />
+for pushing to the github <br />
+git add . <br />
+git commit -m <your message> <br />
+git push -u origin <your branch name> <br />
+## For windows developers <br />
+same steps as the linux but first install git, follow tutorial https://www.atlassian.com/git/tutorials/install-git <br />
 
 # Happy Coding 
