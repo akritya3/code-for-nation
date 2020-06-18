@@ -1,0 +1,229 @@
+.myIconshape{
+    font-size: 40px;
+    height: 30px;
+    display:table-cell;
+    font-display: right;
+    float:right;
+    padding: 40px;
+}
+
+
+
+.myBg{
+    background-color: #8db600;
+    
+}
+
+#slideshowImg{
+    height: 500px;
+    object-fit: cover;
+}
+.carousel-caption{
+    display: inline;
+    color:black;
+}
+
+.mybanner{
+    background-color: darkgray;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    font-size: 15px;
+    
+}
+.myTextalignment{
+    float: left;
+    align-content: center;
+    
+}
+.myIconsize{
+   align-items:baseline;
+   display:inline-block;
+    
+}
+
+.mybannerspace{
+    margin-bottom: 20px;
+}
+
+.myHr{
+    
+    border-top: 2px solid lightsalmon;
+    border-radius: 10px;
+    font-size: 100px;
+    
+}
+
+.imgshow{
+    object-fit: center;
+}
+
+#slideshowpictures{
+    height :250px;
+    text-align: start;
+}
+
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 50px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .containerTab {
+    padding: 20px;
+    color: white;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Closable button inside the image */
+  .closebtn {
+    float: right;
+    color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.myiconalign{
+    font-size: 80px;
+    padding-left: 150px;
+    border-top: mediumorchid;
+}
+
+#footer{
+    background-color: slategray;
+    height: 300px;
+}
+
+
+
+#footer{
+    padding-top: 40px;
+    column-rule-color: darkgray;
+    
+}
+
+.nomargin{
+    list-style-type: disc;
+}
+.btn {
+    background-color:inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn:hover{background: #eee;}
+  .success{
+      color:blue;
+      border: black;
+      background-color: rgb(228, 178, 178)
+      
+      
+  }
+  .success1{
+    color:blue;
+    border: black;
+    background-color: rgb(228, 178, 178);
+  }
+  .success2{
+    color:blue;
+    border: black;
+    background-color: rgb(228, 178, 178);
+    padding-top: 5px;
+  }
+  .image_container{
+      width:300px;
+      height:200px;
+      float: left;
+     
+  }
+  .image_content{
+      float:left;
+      width:500px;
+      margin-left: 100px;
+      
+    }
+  .container_margin{
+      margin-bottom: 100px;
+      height: 500px;
+  }
+  .centered{
+    
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+  }
+ 
+.bg-image {
+   
+    /* Add the blur effect */
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    text-align: center;
+  /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+  
+  /* Position text in the middle of the page/image */
+  .bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+  }
+  .img1{
+      height: 400px;
+      float:left;
+      
+  }
+  .img2{
+      float:right;
+      height:400px;
+      padding-left: 200px;
+
+  }
+  .my_img{
+      height:500px;
+      
+      
+  }
+  .my_heading{
+      float:left;
+     color:blue;
+     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     padding-top: 80px;
+     padding-right: 400px;
+     text-align: left;
+  }
+  .content{
+      float:left;
+      color: cornflowerblue;
+      padding-right: 400px;
+      
+
+  }
