@@ -54,6 +54,7 @@ app.post("/login",user.postLogin);
 app.get("/signup",user.getSignup);
 app.post("/signup",user.postSignup);
 app.get("/account",isAuthenticated, accountController.getAccount);
+app.get("/logout",isAuthenticated, user.getLogout);
 
 
 const server = http.createServer(app);

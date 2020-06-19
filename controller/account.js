@@ -1,3 +1,4 @@
+const { query } = require("../db");
 /**
  * 
  * @param  req 
@@ -5,7 +6,17 @@
  * GET /account 
  */
 const getAccount = (req,res) => {
-  res.send(req.session.passport.user);
+  query("select * from woman where phonenumber=$1",[req.session.passport.user])
+    .then(function(result){
+      res.statusCode = 200;
+      res.json(result.rows);
+      res.end();
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.statusCode = 500;
+      res.send("internal server error");
+    });
 }
 
 module.exports = {
