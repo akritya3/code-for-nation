@@ -4,7 +4,7 @@ module.exports = {
     password: "codefornationIndia",
     database: "naari",
     host: "naari.cjpmgndx2osb.ap-south-1.rds.amazonaws.com",
-    port: 5432,
+    port: 5428,
     max: 20,
     connectionTimeoutMillis: 0,
     idleTimeoutMillis: 0
