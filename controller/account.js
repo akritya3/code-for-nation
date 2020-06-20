@@ -52,9 +52,35 @@ const postAaadharUpdate = (req, res) => {
   else {
     res.end();
   }
-
 }
 
+
+const postPanUpdate = (req, res) => {
+  const phonenumber = req.session.passport.user;
+  const { ispan, pan } = req.body;
+
+  if (ispan === undefined || pan === undefined) {
+    res.statusCode = 400;
+    res.end();
+    return;
+  }
+  if (ispan) {
+    // consider we have verified the pan. We will get the API after govt pass it;
+    query("UPDATE woman SET ispan=$1,pan=$2 WHERE phonenumber=$3", [true, pan, phonenumber])
+      .then(function (result) {
+        res.statusCode = 200;
+        res.end();
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.statusCode = 500;
+        res.end();
+      });
+  }
+  else {
+    res.end();
+  }
+}
 
 //  For Testing The Query In DATABASE
 // function test(){
@@ -72,10 +98,6 @@ const postAaadharUpdate = (req, res) => {
 // }
 
 // test();
-
-
-
-
 
 module.exports = {
   getAccount: getAccount,
