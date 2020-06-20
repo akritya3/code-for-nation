@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="Description" content="">
+  <meta name="Keywords" content="web design,HTML">
+  <meta name="author" content="Akriti">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="fontawesome-free-5.13.0-web/css/all.css">
+  <title>Login</title>
+  <link href="css/login.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="w3-padding w3-xxxlarge w3-teal">
+    <img src="images/p2.jpeg" alt="Trulli" width="500" height="100">
+  </div>
+
+
+  <!--Header-->
+  <nav class="navbar navbar-expand-lg navbar-light myBg">
+    <a class="navbar-brand" style="color:white" href="home.html">NAARI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="#"> <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" style="color:white" href="loginpage.html"><B>Login</B></a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+  <h2 align="center">Login Form</h2>
+
+  <form action="/login" method="post">
+
+    <div class="container">
+      <label for="uname"><b>Mobile Number</b></label>
+      <i class="fas fa-mobile-alt"></i>
+      <input type="text" placeholder="Enter Mobile Number" name="phonenumber" required>
+
+      <label for="psw"><b>Password</b></label>
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="Enter Password" name="password" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+    <div class="container signin">
+      <p> Don't have an account? <a href="signup.html">Sign up</a>.</p>
+    </div>
+  </form>
+</body>
+
+</html>
