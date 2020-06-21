@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/united/bootstrap.min.css">
+    <title>Authentications</title>
+    <style>
+        .customborder {
+            border-radius: 2%;
+            border: 2px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="profile">
+        <%if(typeof data !== 'undefined'){%>
+          <h3>nfowenfoier</h3>
+          <h3><%=data%></h3>
+          <h3>name: <%=data.name%> </h3>
+          <h3>phonenumber: <%=data.phonenumber%> </h3>
+          <h3>ispan: <%=data.ispan%> </h3>
+          <h3>isaadhar: <%=data.isaadhar%> </h3>
+          <h3>ismaritalstatus: <%=data.maritalstatus%> </h3>
+          <h3>highesteducation: <%=data.highesteducation%> </h3>
+          <h3>email: <%=data.email%> </h3>
+        <%}%>
+        <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
+            <form action="/updateprofile" method="POST">
+                <% if (success_message != ''){ %>
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong> <%= success_message %> </strong>
+                </div>
+                <% } %>
+                <% if( error != '') { %>
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong><%= error %></strong>
+                </div>
+                <% } %>
+                <div class="form-group">
+                    <label for="email">Enter Your email</label>
+                    <input type="email" class="form-control" name="email" id="email" autocomplete="off"
+                        placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="maritalstatus">Enter maritalstatus</label>
+                    <input type="checkbox" class="form-control" name="maritalstatus" id="maritalstatus" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="isemployeed">Enter maritalstatus</label>
+                  <input type="checkbox" class="form-control" name="isemployeed" id="isemployeed" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="isbankaccount">Enter maritalstatus</label>
+                  <input type="checkbox" class="form-control" name="isbankaccount" id="isbankaccount" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="highereducation">Enter Your email</label>
+                  <input type="text" class="form-control" name="highesteducation" id="highereducation" autocomplete="off"
+                      placeholder="highereducation">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-block btn-outline-primary" value="Login">
+                </div>
+            </form>
+        </div>
+        <br>
+        <form action="/updateadhar" method="POST">
+          <% if (success_message != ''){ %>
+          <div class="alert alert-dismissible alert-success">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong> <%= success_message %> </strong>
+          </div>
+          <% } %>
+          <% if( error != '') { %>
+          <div class="alert alert-dismissible alert-danger">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong><%= error %></strong>
+          </div>
+          <% } %>
+          <div class="form-group">
+              <label for="email">Enter Your adhar</label>
+              <input type="email" class="form-control" name="email" id="email" autocomplete="off"
+                  placeholder="email">
+          </div>
+          <!-- <div class="form-group">
+              <label for="maritalstatus">Enter maritalstatus</label>
+              <input type="checkbox" class="form-control" name="maritalstatus" id="maritalstatus" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="isemployeed">Enter maritalstatus</label>
+            <input type="checkbox" class="form-control" name="isemployeed" id="isemployeed" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="isbankaccount">Enter maritalstatus</label>
+            <input type="checkbox" class="form-control" name="isbankaccount" id="isbankaccount" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="highereducation">Enter Your email</label>
+            <input type="text" class="form-control" name="highesteducation" id="highereducation" autocomplete="off"
+                placeholder="highereducation">
+          </div> -->
+          <div class="form-group">
+              <input type="submit" class="btn btn-block btn-outline-primary" value="Login">
+          </div>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

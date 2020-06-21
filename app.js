@@ -9,12 +9,11 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const { COOKIE_SECRET, SESSION_SECRET, PORT, HOSTNAME } = require("./env");
-const db = require("./db");
 
 
 const { configStrategy, isAuthenticated } = require("./config/passport");
 const user = require("./controller/user");
-const accountController = require("./controller/account");
+const profileController = require("./controller/profile");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -53,9 +52,10 @@ app.get("/login", user.getLogin);
 app.post("/login", user.postLogin);
 app.get("/signup", user.getSignup);
 app.post("/signup", user.postSignup);
-app.get("/account", isAuthenticated, accountController.getAccount);
+app.get("/profile", isAuthenticated, profileController.getProfile);
 app.get("/logout", isAuthenticated, user.getLogout);
-app.post("/updateaadhar", isAuthenticated, accountController.postAaadharUpdate);
+app.post("/updateaadhar", isAuthenticated, profileController.postAaadharUpdate);
+app.post("/updateprofile", isAuthenticated, profileController.postUpdateProfile);
 
 const server = http.createServer(app);
 
