@@ -33,7 +33,7 @@ const postLogin = async (req, res, next) => {
   console.log(req.body);
   passport.authenticate("local", {
     failureRedirect: "/login",
-    successRedirect: "/account",
+    successRedirect: "/profile",
     failureFlash: true
   })(req, res, next);
 };
