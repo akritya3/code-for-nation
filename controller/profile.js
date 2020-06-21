@@ -9,14 +9,14 @@ const { check, validationResult } = require("express-validator");
  * GET /profile 
  */
 const getProfile = (req, res) => {
-  query("SELECT * FROM woman WHERE phonenumber=$1",[req.session.passport.user])
-  .then(function(result) {
-    const data = result.rows[0];
-    res.render("profile",{data:data});
-  })
-  .catch(function(err){
-    console.log(err);
-  });
+  query("SELECT * FROM woman WHERE phonenumber=$1", [req.session.passport.user])
+    .then(function (result) {
+      const data = result.rows[0];
+      res.render("profile", { data: data });
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 }
 
 /**
@@ -31,35 +31,35 @@ const postUpdateProfile = async (req, res) => {
   const phonenumber = req.session.passport.user;
   let { email, maritalstatus, isemployeed, highesteducation, isbankaccount } = req.body;
   let errors = null;
-  if(email !== undefined) {
+  if (email !== undefined) {
     await check("email").isEmail().run(req);
     errors = validationResult(req);
-    if(!errors.isEmpty) {
+    if (!errors.isEmpty) {
       res.statusCode = 400;
       res.end();
       //res.render("account",{err:"invalid email"});
       return;
     }
   }
-  if( maritalstatus === undefined) {
+  if (maritalstatus === undefined) {
     maritalstatus = null;
   }
-  if(isemployeed === undefined) {
+  if (isemployeed === undefined) {
     isemployeed = null;
   }
-  if(highesteducation === undefined) {
+  if (highesteducation === undefined) {
     highesteducation = null;
   }
-  if(isbankaccount === undefined) {
+  if (isbankaccount === undefined) {
     isbankaccount = false;
   }
-  query("UPDATE woman SET email=$1, maritalstatus=$2, isemployeed=$3, highesteducation=$4, isbankaccount=$5 WHERE phonenumber=$6",[email,maritalstatus,isemployeed,highesteducation,isbankaccount,phonenumber])
-    .then(function(result) {
+  query("UPDATE woman SET email=$1, maritalstatus=$2, isemployeed=$3, highesteducation=$4, isbankaccount=$5 WHERE phonenumber=$6", [email, maritalstatus, isemployeed, highesteducation, isbankaccount, phonenumber])
+    .then(function (result) {
       res.redirect("/profile");
       res.statusCode = 200;
       res.end();
     })
-    .catch(function(err){
+    .catch(function (err) {
       console.log(err);
       res.statusCode = 500;
       res.end();
@@ -70,28 +70,27 @@ const postUpdateProfile = async (req, res) => {
 const postAaadharUpdate = (req, res) => {
   const phonenumber = req.session.passport.user;
   const { isaadhar, aadhar } = req.body;
-
-  if (isaadhar === undefined || aadhar === undefined) {
+  console.log(isaadhar);
+  console.log(aadhar);
+  if (isaadhar === undefined && aadhar === "") {
+    res.sendFile(path.join(__dirname + "/../test.pdf"));
+    return;
+  }
+  if (aadhar.length !== 12) {
     res.statusCode = 400;
     res.end();
     return;
   }
-  if (isaadhar) {
-    // consider we have verified it;
-    query("UPDATE woman SET isaadhar=$1,aadhar=$2 WHERE phonenumber=$3", [true, aadhar, phonenumber])
-      .then(function (result) {
-        res.redirect('/profile');
-      })
-      .catch(function (err) {
-        console.log(err);
-        res.statusCode = 500;
-        res.end();
-      });
-  }
-  else {
-    res.sendFile(path.join(__dirname + "././test.pdf"));
-  }
-
+  // consider we have verified it;
+  query("UPDATE woman SET isaadhar=$1,aadhar=$2 WHERE phonenumber=$3", [true, aadhar, phonenumber])
+    .then(function (result) {
+      res.redirect('/profile');
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.statusCode = 500;
+      res.end();
+    });
 }
 
 

@@ -19,77 +19,68 @@
 <body>
     <div class="container" id="profile">
         <%if(typeof data !== 'undefined'){%>
-          <h3>nfowenfoier</h3>
-          <h3><%=data%></h3>
-          <h3>name: <%=data.name%> </h3>
-          <h3>phonenumber: <%=data.phonenumber%> </h3>
-          <h3>ispan: <%=data.ispan%> </h3>
-          <h3>isaadhar: <%=data.isaadhar%> </h3>
-          <h3>ismaritalstatus: <%=data.maritalstatus%> </h3>
-          <h3>highesteducation: <%=data.highesteducation%> </h3>
-          <h3>email: <%=data.email%> </h3>
+        <h3>nfowenfoier</h3>
+        <h3><%=data%></h3>
+        <h3>name: <%=data.name%> </h3>
+        <h3>phonenumber: <%=data.phonenumber%> </h3>
+        <h3>ispan: <%=data.ispan%> </h3>
+        <h3>isaadhar: <%=data.isaadhar%> </h3>
+        <h3>ismaritalstatus: <%=data.maritalstatus%> </h3>
+        <h3>highesteducation: <%=data.highesteducation%> </h3>
+        <h3>email: <%=data.email%> </h3>
         <%}%>
         <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
             <form action="/updateprofile" method="POST">
                 <% if (success_message != ''){ %>
-                <div class="alert alert-dismissible alert-success">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong> <%= success_message %> </strong>
-                </div>
-                <% } %>
-                <% if( error != '') { %>
-                <div class="alert alert-dismissible alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong><%= error %></strong>
-                </div>
-                <% } %>
-                <div class="form-group">
-                    <label for="email">Enter Your email</label>
-                    <input type="email" class="form-control" name="email" id="email" autocomplete="off"
-                        placeholder="email">
-                </div>
-                <div class="form-group">
-                    <label for="maritalstatus">Enter maritalstatus</label>
-                    <input type="checkbox" class="form-control" name="maritalstatus" id="maritalstatus" autocomplete="off">
-                </div>
-                <div class="form-group">
-                  <label for="isemployeed">Enter maritalstatus</label>
-                  <input type="checkbox" class="form-control" name="isemployeed" id="isemployeed" autocomplete="off">
-                </div>
-                <div class="form-group">
-                  <label for="isbankaccount">Enter maritalstatus</label>
-                  <input type="checkbox" class="form-control" name="isbankaccount" id="isbankaccount" autocomplete="off">
-                </div>
-                <div class="form-group">
-                  <label for="highereducation">Enter Your email</label>
-                  <input type="text" class="form-control" name="highesteducation" id="highereducation" autocomplete="off"
-                      placeholder="highereducation">
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-block btn-outline-primary" value="Login">
-                </div>
-            </form>
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong> <%= success_message %> </strong>
         </div>
-        <br>
-        <form action="/updateadhar" method="POST">
-          <% if (success_message != ''){ %>
-          <div class="alert alert-dismissible alert-success">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong> <%= success_message %> </strong>
-          </div>
-          <% } %>
-          <% if( error != '') { %>
-          <div class="alert alert-dismissible alert-danger">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong><%= error %></strong>
-          </div>
-          <% } %>
-          <div class="form-group">
-              <label for="email">Enter Your adhar</label>
-              <input type="email" class="form-control" name="email" id="email" autocomplete="off"
-                  placeholder="email">
-          </div>
-          <!-- <div class="form-group">
+        <% } %>
+        <% if( error != '') { %>
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><%= error %></strong>
+        </div>
+        <% } %>
+        <div class="form-group">
+            <label for="email">Enter Your email</label>
+            <input type="email" class="form-control" name="email" id="email" autocomplete="off" placeholder="email">
+        </div>
+        <div class="form-group">
+            <label for="maritalstatus">Enter maritalstatus</label>
+            <input type="checkbox" class="form-control" name="maritalstatus" id="maritalstatus" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="isemployeed">Enter maritalstatus</label>
+            <input type="checkbox" class="form-control" name="isemployeed" id="isemployeed" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="isbankaccount">Enter maritalstatus</label>
+            <input type="checkbox" class="form-control" name="isbankaccount" id="isbankaccount" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="highereducation">Enter Your email</label>
+            <input type="text" class="form-control" name="highesteducation" id="highereducation" autocomplete="off"
+                placeholder="highereducation">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-block btn-outline-primary" value="Login">
+        </div>
+        </form>
+    </div>
+    <br>
+    <form action="/updateaadhar" method="POST">
+        <div class="form-group">
+            <label for="email">Enter Your adhar</label>
+            <input type="checkbox" class="form-control" name="isaadhar" id="email" autocomplete="off"
+                placeholder="text">
+        </div>
+        <div class="form-group">
+            <label for="email">Enter Your adhar</label>
+            <input type="text" class="form-control" name="aadhar" id="email" autocomplete="off" placeholder="text">
+        </div>
+        <!-- <div class="form-group">
               <label for="maritalstatus">Enter maritalstatus</label>
               <input type="checkbox" class="form-control" name="maritalstatus" id="maritalstatus" autocomplete="off">
           </div>
@@ -106,10 +97,10 @@
             <input type="text" class="form-control" name="highesteducation" id="highereducation" autocomplete="off"
                 placeholder="highereducation">
           </div> -->
-          <div class="form-group">
-              <input type="submit" class="btn btn-block btn-outline-primary" value="Login">
-          </div>
-      </form>
+        <div class="form-group">
+            <input type="submit" class="btn btn-block btn-outline-primary" value="Aadhar">
+        </div>
+    </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
