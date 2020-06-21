@@ -24,7 +24,7 @@ const getAccount = (req, res) => {
 const postUpdateProfile = (req, res) => {
   const phonenumber = req.session.passport.user;
   const { email, maritalstatus, isaadhar, aadhar, ispan, pan, israshan, rashan, isdomicile, domicile, isemployeed, highesteducation, isbankaccount } = req.body;
-
+  
 }
 
 const postAaadharUpdate = (req, res) => {
