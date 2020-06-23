@@ -22,7 +22,7 @@ const getProfile = (req, res) => {
 /**
  * 
  * @param  req 
- * @param req.body = {email, maritalstatus, isemployeed, highesteducation, isbankaccount };
+ * @param req.body = {email:string, maritalstatus:checkbox, isemployeed:checkbox, highesteducation:string, isbankaccount:checkbox };
  * @param  res 
  * POST /updateprofile
  * 
@@ -37,22 +37,22 @@ const postUpdateProfile = async (req, res) => {
     if (!errors.isEmpty) {
       res.statusCode = 400;
       res.end();
-      //res.render("account",{err:"invalid email"});
       return;
     }
   }
   if (maritalstatus === undefined) {
-    maritalstatus = null;
-  }
+    maritalstatus = false;
+  } else maritalstatus = true; 
   if (isemployeed === undefined) {
-    isemployeed = null;
-  }
-  if (highesteducation === undefined) {
+    isemployeed = false;
+  } else isemployeed = true;
+  if (highesteducation === "") {
     highesteducation = null;
-  }
+  } 
   if (isbankaccount === undefined) {
     isbankaccount = false;
-  }
+  } else isbankaccount = true;
+
   query("UPDATE woman SET email=$1, maritalstatus=$2, isemployeed=$3, highesteducation=$4, isbankaccount=$5 WHERE phonenumber=$6", [email, maritalstatus, isemployeed, highesteducation, isbankaccount, phonenumber])
     .then(function (result) {
       res.redirect("/profile");
@@ -66,7 +66,13 @@ const postUpdateProfile = async (req, res) => {
     })
 
 }
-
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res
+ * req.body = {isaadhar: checkbox, aadhar: string}
+ * POST /updateaadhar 
+ */
 const postAaadharUpdate = (req, res) => {
   const phonenumber = req.session.passport.user;
   const { isaadhar, aadhar } = req.body;
@@ -93,23 +99,39 @@ const postAaadharUpdate = (req, res) => {
     });
 }
 
-
-//  For Testing The Query In DATABASE
-// function test(){
-//   query("SELECT * FROM woman")
-//     .then(function(result){
-//       res.statusCode = 200;
-//       res.json(result.rows);
-//       res.end();
-//     })
-//     .catch(function(err){
-//       console.log(err);
-//       res.statusCode = 500;
-//       res.send("internal server erorr")
-//     });
-// }
-
-// test();
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res
+ * req.body = { ispan:checkbox, pan:string }
+ * POST /panupdate 
+ */
+const postPanUpdate = (req, res) => {
+  const phonenumber = req.session.passport.user;
+  const { ispan, pan } = req.body;
+  console.log(ispan);
+  console.log(pan);
+  if (ispan === undefined && pan === "") {
+    res.sendFile(path.join(__dirname + "/../test.pdf"));
+    return;
+  }
+  // pan verification api ....
+  if (aadhar.length !== 10) {
+    res.statusCode = 400;
+    res.end();
+    return;
+  }
+  // consider we have verified it;
+  query("UPDATE woman SET ispan=$1,pan=$2 WHERE phonenumber=$3", [true, pan, phonenumber])
+    .then(function (result) {
+      res.redirect('/profile');
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.statusCode = 500;
+      res.end();
+    });
+}
 
 
 
@@ -118,5 +140,6 @@ const postAaadharUpdate = (req, res) => {
 module.exports = {
   getProfile: getProfile,
   postAaadharUpdate: postAaadharUpdate,
-  postUpdateProfile: postUpdateProfile
+  postUpdateProfile: postUpdateProfile,
+  postPanUpdate: postPanUpdate
 };

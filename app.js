@@ -56,6 +56,7 @@ app.get("/profile", isAuthenticated, profileController.getProfile);
 app.get("/logout", isAuthenticated, user.getLogout);
 app.post("/updateaadhar", isAuthenticated, profileController.postAaadharUpdate);
 app.post("/updateprofile", isAuthenticated, profileController.postUpdateProfile);
+app.post("/updatepan", isAuthenticated, profileController.postUpdateProfile);
 
 const server = http.createServer(app);
 
