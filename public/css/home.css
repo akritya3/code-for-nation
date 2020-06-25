@@ -47,5 +47,12 @@
     .mybannerspace{
     margin-bottom: 20px;
     }
-
+    ul.nav-pills {
+      top: 20px;
+      position: fixed;
+    }
+    div.col-8 div {
+      height: 300px;
+    }
+    
     
