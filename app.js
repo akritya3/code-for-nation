@@ -15,6 +15,8 @@ const { configStrategy, isAuthenticated } = require("./config/passport");
 const woman = require("./controller/woman");
 const womanProfile = require("./controller/womanprofile");
 const employer = require("./controller/employer");
+const job  = require("./controller/job");
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -65,13 +67,24 @@ app.post("/woman/updatepan", isAuthenticated, womanProfile.postUpdateProfile);
 // employer login logout related routes
 app.get("/employer/signup", employer.getSignupEmployer);
 app.post("/employer/signup", employer.postSignupEmployer);
+app.get("/employer/login", employer.getLoginEmployer);
+app.post("/employer/login",employer.postLoginEmployer);
+app.get("/employer/dashboard",isAuthenticated, employer.getEmployerDashboard);
+app.get("/employer/logout", isAuthenticated, employer.getEmployerLogout);
+app.get("/employer/verify", employer.getVerifyEmployer);
+app.post("/employer/verify", employer.postVerifyEmployer);
 
 
 // employer profile update routes
 
 
 // job related routes
-
+app.get("/addnewjob",isAuthenticated, job.getAddNewJob);
+app.post("/addnewjob", isAuthenticated, job.postAddNewJob);
+app.get("/searchjob", isAuthenticated, job.getFindJobPage);
+app.post("/searchjob", isAuthenticated, job.postSearchJobs);
+app.get("/deletejob", isAuthenticated, job.getDeleteJob);
+app.post("/deletejob", isAuthenticated, job.postDeleteJob);
 
 const server = http.createServer(app);
 

@@ -1,6 +1,7 @@
 const { check, validationResult } = require("express-validator");
 const {query} = require("../db");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 /**
  * GET /employer/signup
  * returns the employer.html, which contains a form to add a new employer to the database 
@@ -98,34 +99,47 @@ const postSignupEmployer = async (req,res) => {
  * GET /employer/login 
  */
 const getLoginEmployer = (req, res) => {
-
+  res.render("employerlogin");
 };
 
 /**
  * POST /employer/login 
  */
-const postLoginEmployer = (req,res) => {
-  
+const postLoginEmployer = async (req,res,next) => {
+  await check("password").isLength({min:1}).run(req);
+  await check("phonenumber").isMobilePhone("en-IN").run(req);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.render("employerlogin",{err:"invalid details kindly check phone number"});
+    return;
+  }
+  console.log("going to authenticate employer");
+  passport.authenticate("local.employer", {
+    failureRedirect: "/employer/login",
+    successRedirect: "/employer/dashboard",
+    failureFlash: true
+  })(req, res, next);
 };
 /**
  * GET /employer/logout 
  */
 const getEmployerLogout = (req, res) => {
-  res.render("employer");
+  req.logOut();
+  res.redirect("/");
 };
 
 /**
  * GET /employer/dashboard 
  */
 const getEmployerDashboard = (req, res) => {
-
+  res.redirect("/employerdashboard.html");
 };  
 
 /**
  * GET /employer/verify 
  */
 const getVerifyEmployer = (req, res) => {
-  res.redirect("/verifyemployer.html");
+  res.redirect("/employerverify.html");
 };
 
 /**
@@ -136,11 +150,29 @@ const getVerifyEmployer = (req, res) => {
  * now they can login and post their jobs in the portal.
  */
 const postVerifyEmployer = (req, res) => {
+  const {phonenumber} = req.body;
+  query("DELETE FROM notverifiedemployers WHERE employerid=$1",[phonenumber])
+    .then(function(result) { 
+      if(result.rowCount === 1) { 
+        res.redirect("/success.html");
+      }
+      else res.redirect("/failure.html");
+    })
+    .catch(function(err){
+      console.log(err);
+      res.redirect("/failure.html");
+    })
 
 };
 
 
 module.exports = {
   getSignupEmployer: getSignupEmployer,
-  postSignupEmployer: postSignupEmployer
+  postSignupEmployer: postSignupEmployer,
+  getLoginEmployer: getLoginEmployer,
+  postLoginEmployer: postLoginEmployer,
+  getEmployerDashboard: getEmployerDashboard,
+  getEmployerLogout: getEmployerLogout,
+  postVerifyEmployer: postVerifyEmployer,
+  getVerifyEmployer: getVerifyEmployer
 };

@@ -27,7 +27,7 @@ const postLogin = async (req, res, next) => {
   await check("phonenumber").isMobilePhone("en-IN").run(req);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.render("login",{err:"invalid details kindly check phone number"});
+    res.render("womanlogin",{err:"invalid details kindly check phone number"});
     return;
   }
   console.log(req.body);

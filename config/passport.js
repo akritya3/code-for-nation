@@ -35,12 +35,42 @@ const womanStrategy = new LocalStrategy(
       });
   })
 
-// const employerStrategy = new LocalStrategy();
+const employerStrategy = new LocalStrategy(  {
+  usernameField: "phonenumber",
+  passwordField: "password"
+},
+function (phonenumber, password, done) {
+  console.log("employer");
+  console.log(phonenumber);
+  console.log(password);
+  query("SELECT phonenumber,password FROM employer WHERE phonenumber=$1", [phonenumber])
+    .then(function (result) {
+      const data = result.rows;
+
+      if (data.length === 0) {
+        done(null, false, { message: "User Doesn't Exist.Kindly signup" });
+      }
+
+      const hash = data[0].password;
+      brcypt.compare(password, hash)
+        .then(function (match) {
+          return match ? done(null, data[0].phonenumber) : done(null, false, { message: "Invalid Password" });
+        })
+        .catch(function (err) {
+          console.log(err);
+          return done(null, false, { message: "Internal Server Error. Kindly try Again" });
+        });
+    })
+    .catch(function (err) {
+      console.log(err);
+      return done(null, false, { message: "Internal Server Error. Kindly try Again" });
+    });
+});
 
 
 const configStrategy = (passport) => {
   passport.use('local.woman',womanStrategy);
-  // passport.use('local.employer',employerStrategy);
+  passport.use('local.employer',employerStrategy);
   
   // meaning storing a information in cookie to identify the user.
   passport.serializeUser(function (id, done) {
@@ -56,11 +86,12 @@ const configStrategy = (passport) => {
 
 const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
+    console.log("request is authenticated");
     res.set("Cache-control", "no-cache, private, no-store, must-revalidate, post-check=0,pre-check=0");
     return next();
   } else {
     console.log("the request was not authenticated");
-    res.redirect("/login");
+    res.redirect("/");
   }
 };
 
