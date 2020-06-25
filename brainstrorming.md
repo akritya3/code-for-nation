@@ -19,3 +19,13 @@ twitter, facebook and telegram channels made in the name of shashakt naari.
 IDEA OF PHONE CONTROL REGISTRATION
 
 phone call registration to make our idea feasible for poor women who dont have android phone.
+
+IDEA OF CONVERSION OF CASH TO DIGITAL CASH-
+
+converting cash to digital cash using retail stores which converts the cash of poor woman
+and labours to digital cash using ml and upi transfer.
+
+Q - Poor labour women dont have enough money, they will never coooperate in turning and giving their money to gullak because for them money is not investment it is their livelihood ?  So how
+we can benfit them and connect them to the main economy chain ?
+A - https://economictimes.indiatimes.com/wealth/plan/four-ways-you-can-help-poor-people-around-you-with-financial-planning/articleshow/69278206.cms?from=mdr
+Keep doing what you are doing, time will gonna change.
