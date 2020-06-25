@@ -12,8 +12,8 @@ const { COOKIE_SECRET, SESSION_SECRET, PORT, HOSTNAME } = require("./env");
 
 
 const { configStrategy, isAuthenticated } = require("./config/passport");
-const user = require("./controller/user");
-const profileController = require("./controller/profile");
+const woman = require("./controller/woman");
+const womanProfile = require("./controller/womanprofile");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -48,15 +48,29 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static(path.join(__dirname, "/public")));
-app.get("/login", user.getLogin);
-app.post("/login", user.postLogin);
-app.get("/signup", user.getSignup);
-app.post("/signup", user.postSignup);
-app.get("/profile", isAuthenticated, profileController.getProfile);
-app.get("/logout", isAuthenticated, user.getLogout);
-app.post("/updateaadhar", isAuthenticated, profileController.postAaadharUpdate);
-app.post("/updateprofile", isAuthenticated, profileController.postUpdateProfile);
-app.post("/updatepan", isAuthenticated, profileController.postUpdateProfile);
+// woman login logout related routes...
+app.get("/woman/login", woman.getLogin);
+app.post("/woman/login", woman.postLogin);
+app.get("/woman/signup", woman.getSignup);
+app.post("/woman/signup", woman.postSignup);
+app.get("/woman/logout", isAuthenticated, woman.getLogout);
+app.get("/woman/dashboard",isAuthenticated, woman.getWomanDashboard);
+
+// woman profileupdate routes
+app.get("/woman/profile", isAuthenticated, womanProfile.getProfile);
+app.post("/woman/updateaadhar", isAuthenticated, womanProfile.postAaadharUpdate);
+app.post("/woman/updateprofile", isAuthenticated, womanProfile.postUpdateProfile);
+app.post("/woman/updatepan", isAuthenticated, womanProfile.postUpdateProfile);
+
+// employer login logout related routes
+
+
+
+// employer profile update routes
+
+
+// job related routes
+
 
 const server = http.createServer(app);
 

@@ -6,13 +6,13 @@ const { check, validationResult } = require("express-validator");
  * 
  * @param  req 
  * @param  res
- * GET /profile 
+ * GET /woman/profile 
  */
 const getProfile = (req, res) => {
   query("SELECT * FROM woman WHERE phonenumber=$1", [req.session.passport.user])
     .then(function (result) {
       const data = result.rows[0];
-      res.render("profile", { data: data });
+      res.render("womanprofile", { data: data });
     })
     .catch(function (err) {
       console.log(err);
@@ -24,7 +24,7 @@ const getProfile = (req, res) => {
  * @param  req 
  * @param req.body = {email:string, maritalstatus:checkbox, isemployeed:checkbox, highesteducation:string, isbankaccount:checkbox };
  * @param  res 
- * POST /updateprofile
+ * POST /woman/updateprofile
  * 
  */
 const postUpdateProfile = async (req, res) => {
@@ -71,7 +71,7 @@ const postUpdateProfile = async (req, res) => {
  * @param {*} req 
  * @param {*} res
  * req.body = {isaadhar: checkbox, aadhar: string}
- * POST /updateaadhar 
+ * POST /woman/updateaadhar 
  */
 const postAaadharUpdate = (req, res) => {
   const phonenumber = req.session.passport.user;
@@ -101,10 +101,8 @@ const postAaadharUpdate = (req, res) => {
 
 /**
  * 
- * @param {*} req 
- * @param {*} res
  * req.body = { ispan:checkbox, pan:string }
- * POST /panupdate 
+ * POST /woman/panupdate 
  */
 const postPanUpdate = (req, res) => {
   const phonenumber = req.session.passport.user;

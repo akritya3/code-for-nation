@@ -8,18 +8,18 @@ const { query } = require("../db");
  * 
  * @param  req 
  * @param  res
- * GET /login 
+ * GET /woman/login 
  */
 
 const getLogin = (req, res) => {
-  res.render("login");
+  res.render("womanlogin");
 };
 
 /**
  * 
  * @param  req 
  * @param  res
- * POST /login 
+ * POST /woman/login 
  */
 
 const postLogin = async (req, res, next) => {
@@ -31,9 +31,9 @@ const postLogin = async (req, res, next) => {
     return;
   }
   console.log(req.body);
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    successRedirect: "/profile",
+  passport.authenticate("local.woman", {
+    failureRedirect: "/woman/login",
+    successRedirect: "/woman/dashboard",
     failureFlash: true
   })(req, res, next);
 };
@@ -42,10 +42,10 @@ const postLogin = async (req, res, next) => {
  * 
  * @param  req 
  * @param  res
- * GET /signup 
+ * GET /woman/signup 
 */
 const getSignup = (req,res) => {
-  res.render("signup");
+  res.render("womansignup");
 }
 
 
@@ -53,7 +53,7 @@ const getSignup = (req,res) => {
  * 
  * @param  req 
  * @param  res
- * POST /signup 
+ * POST /woman/signup 
  */
 const postSignup = async (req,res) => {
   await check("phonenumber").isMobilePhone("en-IN").run(req);
@@ -111,10 +111,18 @@ const postSignup = async (req,res) => {
       res.render("signup",{err:"internal server error"});
     });
 };
-
+/**
+ * GET /woman/logout 
+ */
 const getLogout = (req, res) => {
   req.logOut();
   res.redirect("/");
+}
+/**
+ * GET /woman/dashboard 
+ */
+const getWomanDashboard = (req, res) => {
+  res.redirect("/womandashboard.html");
 }
 
 
@@ -123,5 +131,6 @@ module.exports = {
   postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
-  getLogout: getLogout
+  getLogout: getLogout,
+  getWomanDashboard: getWomanDashboard
 };
