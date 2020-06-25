@@ -18,7 +18,7 @@
 
 <body>
     <div class="container">
-        <h3 class="text-center p-3">Woman Signup</h3>
+        <h3 class="text-center p-3">Employer Signup</h3>
         <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
           <%if(typeof err != 'undefined'){%>
             <div class="alert alert-dismissible alert-danger">
@@ -26,37 +26,62 @@
               <strong><%=err%> </strong>
             </div>
           <%}%>
-          <form action="/woman/signup" method="POST">
+          <form action="/employer/signup" method="POST">
                 <div class="form-group">
                     <label for="phonenumber">Enter Your phonenumber</label>
                     <input type="text" class="form-control" name="phonenumber" id="phonenumber" autocomplete="off"
                         placeholder="phonenumber">
                 </div>
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" autocomplete="off"
-                        placeholder="Name">
+                    <label for="companyname">Company Name</label>
+                    <input type="text" class="form-control" name="companyname" id="companyname" autocomplete="off"
+                        placeholder="Company Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="uam">Company Uam</label>
+                  <input type="text" class="form-control" name="uam" id="uam" autocomplete="off"
+                      placeholder="Enter uam number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Company Email</label>
+                    <input type="text" class="form-control" name="email" id="email" autocomplete="off"
+                        placeholder="Enter Email" required>
+                  </div>
+                <div class="form-group">
+                  <label for="about">Tell us something about your company</label>
+                  <input type="text" class="form-control" name="about" id="about" autocomplete="off"
+                      placeholder="Enter about" required>
+                </div>
+                <div class="form-group">
+                  <label for="location">Location</label>
+                  <input type="text" class="form-control" name="location" id="location" autocomplete="off"
+                      placeholder="Enter company's address" required>
+                </div>
+                <div class="form-group">
+                  <label for="owner">Owner</label>
+                  <input type="text" class="form-control" name="owner" id="owner" autocomplete="off"
+                      placeholder="company owner name" required>
+                </div>
+                <div class="form-group">
+                  <label for="website">Company's website</label>
+                  <input type="text" class="form-control" name="website" id="website" autocomplete="off"
+                      placeholder="Enter company's website link if exist">
                 </div>
                 <div class="form-group">
                     <label for="password">Choose A Password</label>
                     <input type="password" class="form-control" name="password" id="password" autocomplete="off"
                         placeholder="Password">
                 </div>
-
-                <div class="form-group">
-                    <label for="age">Name</label>
-                    <input type="number" class="form-control" name="age" id="age" autocomplete="off"
-                        placeholder="age">
-                </div>
                 <div class="form-group">
                     <label for="confirmpassword">Confirm Your Password</label>
                     <input type="password" class="form-control" name="confirmPassword" id="confirmpassword"
                         autocomplete="off" placeholder="Confirm Password">
                 </div>
+
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
                 </div>
-                <p>Already Registered ? <a class="card-link" href="/woman/login">Login</a> </p>
+                <p>Already Registered ? <a class="card-link" href="/employer/login">Login</a> </p>
             </form>
         </div>
     </div>

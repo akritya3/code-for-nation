@@ -75,13 +75,18 @@ const postSignup = async (req,res) => {
         err += "Invalid " + element.param + ".";
       }      
     });
-    res.render("signup",{err:`${err}`});
+    res.render("womansignup",{err:`${err}`});
     return;
   }
 
   const {phonenumber,name,password,age} = req.body;
   query("SELECT phonenumber FROM woman WHERE  phonenumber=$1",[phonenumber])
     .then(function(result) {
+      const data = result.rows.length;
+      if(data !== 0) {
+        res.render("womansignup",{err:"user already exist try to login"});
+        return;
+      }
       bcrypt.genSalt(16)
         .then(function(salt) {
           bcrypt.hash(password,salt)
@@ -89,26 +94,26 @@ const postSignup = async (req,res) => {
               query("INSERT INTO woman(phonenumber, name, password, age) VALUES($1,$2,$3,$4)",[phonenumber,name,hash,age])
                 .then(function() {
                   req.flash("success_message", "Registered successfully... Login to continue..");
-                  res.redirect("/login");
+                  res.redirect("/woman/login");
                 })
                 .catch(function(err) {
                   console.log(err);
-                  res.render("signup",{err:"internal server error"});
+                  res.render("womansignup",{err:"internal server error"});
                 })
             })
             .catch(function(err) {
               console.log(err);
-              res.render("signup",{err:"internal server error"});
+              res.render("womansignup",{err:"internal server error"});
             });
         })
         .catch(function(err) {
           console.log(err);
-          res.render("signup",{err:"internal server error"});
+          res.render("womansignup",{err:"internal server error"});
         });
     })
     .catch(function(err){
       console.log(err);
-      res.render("signup",{err:"internal server error"});
+      res.render("womansignup",{err:"internal server error"});
     });
 };
 /**

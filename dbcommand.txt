@@ -1,0 +1,1 @@
+psql -h naari.cjpmgndx2osb.ap-south-1.rds.amazonaws.com -p 5428 -U codemagicians -W -d naari

@@ -14,7 +14,7 @@ const { COOKIE_SECRET, SESSION_SECRET, PORT, HOSTNAME } = require("./env");
 const { configStrategy, isAuthenticated } = require("./config/passport");
 const woman = require("./controller/woman");
 const womanProfile = require("./controller/womanprofile");
-
+const employer = require("./controller/employer");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -63,7 +63,8 @@ app.post("/woman/updateprofile", isAuthenticated, womanProfile.postUpdateProfile
 app.post("/woman/updatepan", isAuthenticated, womanProfile.postUpdateProfile);
 
 // employer login logout related routes
-
+app.get("/employer/signup", employer.getSignupEmployer);
+app.post("/employer/signup", employer.postSignupEmployer);
 
 
 // employer profile update routes
