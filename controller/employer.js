@@ -105,7 +105,7 @@ const getLoginEmployer = (req, res) => {
  * POST /employer/login 
  */
 const postLoginEmployer = (req,res) => {
-
+  
 };
 /**
  * GET /employer/logout 
