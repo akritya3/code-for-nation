@@ -26,7 +26,7 @@
 
     <!--Header-->
     <nav class="navbar navbar-expand-lg navbar-light myBg">
-        <a class="navbar-brand" style="color:white" href="#">NAARI</a>
+        <a class="navbar-brand" style="color:white" href="/naari"><B>NAARI</a></B>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,7 +40,15 @@
               <a class="nav-link" style="color:white" href="/login"><B>Login</B></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" style="color:white" href="/signup"><B>Signup</B></a>
+              <a class="nav-link dropdown-toggle" style="color: white;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <B>Signup</B>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/signupwomen">Women</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/signupemployee">Employee</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/signupbanker">Banker</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
