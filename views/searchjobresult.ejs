@@ -18,12 +18,12 @@
 
 <body>
     <div class="container" id="login">
-        <h3 class="text-center p-3">Add Job</h3>
+        <h3 class="text-center p-3">Search resuld</h3>
         <%if(typeof data !== 'undefined'){%>
-          <%data.forEach((ele)=>%>
+          <%data.forEach( function(ele) {%>
           <h3>title: <%=ele.title%> </h3>
           <h3>description: <%=ele.description%></h3>
-          <%)%>
+          <%})%>
         <%}%>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

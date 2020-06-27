@@ -3,11 +3,11 @@ const { query } = require("../db");
 const { check, validationResult } = require("express-validator");
 
 /** 
- * GET /searchjob
+ * GET /searchjobs
  * returns the findpage.html, which contains a form to search jobs on the basis of 
  * skill, title or location.
 */
-const getFindJobPage = (req, res) => {
+const getSearchJobs = (req, res) => {
   res.render("searchjob");
 };
 
@@ -98,6 +98,7 @@ const postSearchJobs = async (req, res) => {
     res.render("searchjob",{err:"incomplete or wrong details"});
     return;
   } 
+  const {title,location} = req.body;
   query("SELECT * FROM jobs WHERE title=$1 AND location=$2",[title, location])
     .then(function(result) {
       const data = result.rows;
@@ -114,6 +115,6 @@ module.exports = {
   postAddNewJob: postAddNewJob,
   getDeleteJob: getDeleteJob,
   postDeleteJob: postDeleteJob,
-  getFindJobPage: getFindJobPage,
-  postSearchJobs: postSearchJobs
+  postSearchJobs: postSearchJobs,
+  getSearchJobs: getSearchJobs
 };

@@ -81,8 +81,8 @@ app.post("/employer/verify", employer.postVerifyEmployer);
 // job related routes
 app.get("/addnewjob",isAuthenticated, job.getAddNewJob);
 app.post("/addnewjob", isAuthenticated, job.postAddNewJob);
-app.get("/searchjob", isAuthenticated, job.getFindJobPage);
-app.post("/searchjob", isAuthenticated, job.postSearchJobs);
+app.get("/searchjobs", isAuthenticated, job.getSearchJobs);
+app.post("/searchjobs", isAuthenticated, job.postSearchJobs);
 app.get("/deletejob", isAuthenticated, job.getDeleteJob);
 app.post("/deletejob", isAuthenticated, job.postDeleteJob);
 
