@@ -20,8 +20,7 @@ create table products(
   product_locations text[] not null,
   product_price integer not null,
   product_likes integer not null,
-  product_buy_count integer not null,
-  product_contact_count integer not null  
+  product_buy_count integer not null,  
 );
 
 create table comments(
