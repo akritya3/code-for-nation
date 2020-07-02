@@ -16,6 +16,7 @@ const woman = require("./controller/woman");
 const womanProfile = require("./controller/womanprofile");
 const employer = require("./controller/employer");
 const job  = require("./controller/job");
+const msme = require("./controller/msme");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -85,6 +86,13 @@ app.get("/searchjobs", isAuthenticated, job.getSearchJobs);
 app.post("/searchjobs", isAuthenticated, job.postSearchJobs);
 app.get("/deletejob", isAuthenticated, job.getDeleteJob);
 app.post("/deletejob", isAuthenticated, job.postDeleteJob);
+
+
+// msme routes...
+
+app.get("/msme/signup", msme.getMsmeSignup);
+app.post("/msme/signup", msme.postMsmeSignup);
+
 
 const server = http.createServer(app);
 

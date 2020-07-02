@@ -64,7 +64,8 @@ create table grahak(
   grahak_id bigserial primary key,
   grahak_name text not null,
   grahak_email text,
-  grahak_phonenumber char(10) not null unique
+  grahak_phonenumber char(10) not null unique,
+  grahak_password text not null
 );
 
 create table jobs(
