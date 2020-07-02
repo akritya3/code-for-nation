@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/united/bootstrap.min.css">=
+    <title>User - Signup</title>
+
+    <style>
+      .customborder {
+        border-radius: 2%;
+        border: 2px solid black;
+        background-color: blanchedalmond;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="container">
+      <h3 class="text-center p-3">We Welcome You User</h3>
+      <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
+        <% if( error != '') { %>
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong><%= error %></strong>
+        </div>
+        <% } %>
+        <% if (success_message != ''){ %>
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong> <%= success_message %> </strong>
+        </div>
+        <% } %>
+
+    <form class="" action="/user/login" method="post">
+      <div class="form-group">
+        <label for="user-phonenumber">Phone Number</label>
+        <input type="text" class="form-control" name="user-phonenumber" required>
+      </div>
+      <div class="form-group">
+        <label for="user-password">Password</label>
+        <input type="password" class="form-control" name="user-password" required>
+      </div>
+      <div class="form-group">
+          <input type="submit" class="btn btn-block btn-outline-primary" value="login">
+      </div>
+    </form>
+  </body>
+</html>
