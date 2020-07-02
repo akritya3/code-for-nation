@@ -1,15 +1,36 @@
+const bcrypt = require("bcryptjs");
+const passport = require("passport");
+const { check, validationResult } = require("express-validator");
+const { query } = require("../db");
 
 /**
  * GET /msme/signup 
  */
 const getMsmeSignup = (req, res) => {
-  
+  res.render("msmesignup");
 };
 
 /**
  * POST /msme/signup 
  */
-const postMsmeSignup = (req,res) => {
+const postMsmeSignup = async (req,res) => {
+  await check("msme_name").notEmpty().run(req);
+  await check("msme_uam").isLength({min:12, max:12}).run(req);
+  await check("msme_owner").notEmpty().run(req);
+  await check("msme_phonenumber").isMobilePhone("en-IN").run(req);
+  await check("msme_address").notEmpty().run(req);
+  await check("msme_email").isEmail().run(req);
+  await check("msme_type").notEmpty().run(req);
+
+  const errors = validationResult(req);
+
+  if(!errors.isEmpty()) {
+    res.statusCode = 422;
+    req.flash("error", "Invalid request kindly check all the details");
+    res.redirect("/msme/signup");
+  }
+
+  const {msme_name, msme_uam, msme_owner, msme_phonenumber,}
 
 };
 

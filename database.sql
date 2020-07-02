@@ -7,7 +7,8 @@ create table msmes(
   msme_phonenumber char(10) not null unique,
   msme_email text not null,
   msme_website text,
-  msme_type text not null
+  msme_type text not null,
+  msme_password  text not null
 );
 
 create table products(

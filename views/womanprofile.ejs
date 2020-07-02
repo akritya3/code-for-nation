@@ -30,8 +30,8 @@
         <h3>email: <%=data.email%> </h3>
         <%}%>
         <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
-            <form action="/updateprofile" method="POST">
-                <% if (success_message != ''){ %>
+        <form action="/updateprofile" method="POST">
+        <% if (success_message != ''){ %>
         <div class="alert alert-dismissible alert-success">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong> <%= success_message %> </strong>
